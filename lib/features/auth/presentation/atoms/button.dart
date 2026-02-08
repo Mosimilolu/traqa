@@ -42,7 +42,7 @@ class _ButtonState extends State<Button> {
                         ),
                         borderRadius: BorderRadius.circular(10),
                         color: value
-                            ? kText7Color.withOpacity(.1)
+                            ? kText7Color.withValues(alpha: .1)
                             : Colors.transparent,
                       ),
                       child: Row(

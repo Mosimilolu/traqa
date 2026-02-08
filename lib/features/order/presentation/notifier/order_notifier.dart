@@ -53,9 +53,10 @@ class OrderNotifier extends ChangeNotifier {
             notifyListeners();
           },
           (Message? r) {
-            AppLogger.log(r);
             if (r != null) {
               final message = (r.data) as String;
+
+              AppLogger.log(message);
 
               if (message.isNotEmpty) {
                 _orderStatus = stringToOrderStatus(message);

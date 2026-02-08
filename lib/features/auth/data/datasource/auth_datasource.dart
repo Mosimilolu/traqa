@@ -17,15 +17,13 @@ class AuthDataSourceImpl extends AuthDataSource {
 
   @override
   Future<AuthModel> signInWithGoogle() async {
-    final GoogleSignInAccount? user = await _googleSignIn.signIn();
+    await _googleSignIn.initialize();
 
-    if (user == null) {
-      throw const NoGoogleAccountChosenException();
-    }
-    final GoogleSignInAuthentication googleAuth = await user.authentication;
+    final GoogleSignInAccount user = await _googleSignIn.authenticate();
+    final GoogleSignInAuthentication googleAuth = user.authentication;
 
     final OAuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
+      accessToken: googleAuth.idToken,
       idToken: googleAuth.idToken,
     );
 

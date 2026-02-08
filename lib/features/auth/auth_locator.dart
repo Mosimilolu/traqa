@@ -5,9 +5,7 @@ import 'package:traqa/features/features.dart';
 void setUpAuthLocator() {
   /// DataSource
   getIt.registerLazySingleton<AuthDataSource>(
-    () => AuthDataSourceImpl(
-      googleSignIn: GoogleSignIn(),
-    ),
+    () => AuthDataSourceImpl(googleSignIn: GoogleSignIn.instance),
   );
 
   /// Repository
